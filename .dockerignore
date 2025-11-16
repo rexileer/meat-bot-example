@@ -1,0 +1,22 @@
+# Exclude heavy/local volumes and secrets from build context
+pg_data/
+redis-data/
+minio-data/
+Logs/
+log_all.log
+logs_bot.log
+Web/static/
+Web/media/
+minio-data/
+*.rdb
+*.sqlite3
+__pycache__/
+*.pyc
+*.log
+.env
+data/.env
+dump_file.sql
+minio-data/**
+pg_data/**
+redis-data/**
+

@@ -1,0 +1,44 @@
+{% extends "admin/change_list.html" %}
+{% load static %}
+{% load i18n admin_list %}
+{% block result_list %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}"/>
+    {% if action_form and actions_on_top and cl.full_result_count %}{% admin_actions %}{% endif %}
+    {% for key, values  in mixes.items %}
+        <details>
+            <summary>{{ key }}</summary>
+            {% for recipe_name, mixes_list  in values.items %}
+                <details style='margin-left:20px;'>
+                   <table style='margin-left:50px; margin-top: 5px'>
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Номер замеса</th>
+                                    <th>Номер паллета</th>
+                                    <th>Статус</th>
+                                    <th>Дополнительные данные</th>
+                                </tr>
+                                </thead>
+                    <summary style='margin-left:20px;'>{{ recipe_name }}</summary>
+                    {% for mix  in mixes_list %}
+
+                                <tbody>
+                                <tr>
+                                    <td><input type="checkbox" name="_selected_action" value="{{ mix.id }}" class="action-select"></td>
+                                    <td><a href="/admin/CRM/mincedmeatbatch/{{ mix.meat_id }}/change">{{ mix.production_id }}</a></td>
+                                    <td>{{ mix.pallet_id }}</td>
+                                    <td>{{ mix.status }}</td>
+                                    <td>{{ mix.additional_data }}</td>
+                                </tr>
+                                </tbody>
+                    {% endfor %}
+                   </table>
+                </details>
+
+            {% endfor %}
+
+        </details>
+    {% endfor %}
+    {% if action_form and actions_on_bottom and cl.full_result_count %}{% admin_actions %}{% endif %}
+
+{% endblock %}

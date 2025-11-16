@@ -1,0 +1,17 @@
+position_dict = {
+    "raw_material_reciver": "Приемщик сырья",
+    "defrost_manager": "Управляющий дефростором",
+    "Farshesostovitel": "Фаршесостовитель",
+    "Farshesostovitel_line_2": "Фаршесостовитель второй линии",
+    "press_operator_line_1": "Оператор пресса первой линии",
+    "press_operator_line_2": "Оператор пресса второй линии",
+    "labaratory": "Лабаратория",
+    "packer": "Фасовщик",
+    "technologist": "Главный технолог",
+    "rastarshchik": "Растарщик первой линии",
+    "rastarshchik_line_2": "Растарщик второй линии",
+    "rastarshchik_meat_blanks": "Растарщик заготовок",
+    "storekeeper": "Кладовщик",
+    "storekeeper_shocker": "Кладовщик заморозка",
+    "mko_manager_line_2": "Управляющий второй линией МКО",
+}

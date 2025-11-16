@@ -1,0 +1,82 @@
+{% extends 'admin/base_site.html' %}
+{% load i18n admin_urls static admin_modify %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}">
+    <style>
+        .select2-selection, .select2-search, .select2-search__field, .select2-results__option, .select2-selection__rendered {
+            color: var(--body-fg) !important;
+            line-height: 28px;
+            background-color: var(--body-bg) !important;
+        }
+    </style>
+{% endblock %}
+<script src="{% url 'admin:jsi18n' %}"></script>
+
+{% block content %}
+    <div id="content-main">
+    {% block field_sets %}
+        <form {% if has_file_field %}
+            enctype="multipart/form-data" {% endif %}{% if form_url %}action="{{ form_url }}" {% endif %}method="post"
+            id="{{ opts.model_name }}_form" novalidate>{% csrf_token %}{% block form_top %}{% endblock %}
+            <p>{{ form.desc }}</p>
+            <ul class="errorlist">
+                {% if form.non_field_errors %}
+                    <li>{{ form.non_field_errors }}</li>
+                {% endif %}
+                {% for field in form %}
+                    {% if field.errors %}
+                        <li>
+                            Ошибка в поле "{{ field.label }}"
+                            <ul class="errorlist">
+                                {% for error in field.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <div>
+                <fieldset class="module aligned">
+                    {% for field in form %}
+                        <div class="form-row field-name">
+                            <div>
+                                {{ field.label_tag }}
+                                {{ field }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </fieldset>
+            </div>
+            <input type="submit" value="Подтвердить">
+        </form>
+    {% endblock %}
+{% endblock %}
+
+{% block footer %}
+    <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+
+    {{ form.media }}
+
+    <script>
+        (function ($) {
+            $('#add-form').click(function () {
+                var index = $('#id_inline_test_models-TOTAL_FORMS').val()
+                var newTable = $('#id_inline_test_models-__prefix__-DELETE').parents('table').clone()
+                newTable.find(':input').each(function () {
+                    for (attr of ['name', 'id'])
+                        $(this).attr(
+                            attr,
+                            $(this).attr(attr).replace('__prefix__', index)
+                        )
+                })
+                newTable.insertBefore($(this))
+                $('#id_inline_test_models-TOTAL_FORMS').val(
+                    parseInt($('#id_inline_test_models-TOTAL_FORMS').val()) + 1
+                )
+                newTable.slideDown()
+            })
+        })($)
+    </script>
+{% endblock %}

@@ -1,0 +1,66 @@
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.so
+*.egg-info/
+.eggs/
+*.egg
+.Python
+pip-wheel-metadata/
+
+# --- Virtual envs ---
+env/
+venv/
+.venv/
+
+# --- Django / project data ---
+Web/media/
+# Keep collected static if you commit it; comment the next line if static is tracked
+# Web/static/
+
+# --- Logs ---
+*.log
+log_all.log
+logs_bot.log
+debug.log
+Logs/
+
+# --- Environment files ---
+.env
+.env.*
+data/.env
+data/.env.*
+
+# --- Docker volumes ---
+pg_data/
+redis-data/
+minio-data/
+
+# --- OS / IDE ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.iml
+
+# --- Coverage / test artifacts ---
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+
+# --- Build artifacts ---
+dist/
+build/
+
+# --- Misc ---
+dump_file.sql
+*.Zone.Identifier
+
+
+.cursorrules
+/files
+/memory-bank

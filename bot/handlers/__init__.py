@@ -1,0 +1,13 @@
+from . import start  # NOQA
+from . import raw_meat_batch  # NOQA
+from . import technologist  # NOQA
+from . import laboratory  # NOQA
+from . import meat_blank  # NOQA
+from . import storekeeper  # NOQA
+from . import rastarshik  # NOQA
+from . import defroster  # NOQA
+from . import minced_meat_mix  # NOQA
+from . import second_minced_meat  # NOQA
+from . import press_operator  # NOQA
+from . import mixer  # NOQA
+from . import packer  # NOQA
